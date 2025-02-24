@@ -6,6 +6,7 @@
     <!-- including charset incase of if title text does include non-ASCII chars, using bloginfo() it takes site's charset dynamically -->
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php wp_head(); ?>
 </head>
 <body>
     
@@ -21,4 +22,4 @@
         <!-- Adding dunamic Page visible title on the header usig bloginfo() -->
         <h1><?php bloginfo('name') ?> : <?php bloginfo('description') ?></h1>
     </header>
-    <hr>
+    

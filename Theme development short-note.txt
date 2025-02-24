@@ -114,3 +114,36 @@ inside header.php:
 
 ==============================================================================================
 
+9. Linking stylesheet to the theme.
+We already have a stylesheet : styles.css. To add  it , we have to add some code part to function.php and header.php , also footer.php 
+
+inside functions.php ::
+
+--Defining a function :
+
+function elifin_assets(){
+    wp_enqueue_style('style', get_stylesheet_uri());
+}
+
+>This function, elifin_assets, is defined to enqueue (add) a stylesheet.
+>wp_enqueue_style is a WordPress function used to include CSS stylesheets.
+>'style' is the handle/name for the stylesheet being added.
+>get_stylesheet_uri() is a function that returns the URL of the current theme's stylesheet (style.css).
+
+--Hooking the Function:
+
+add_action('wp_enqueue_scripts', 'elifin_assets');
+
+>add_action is a WordPress function that hooks a custom function to a specific action.
+>'wp_enqueue_scripts' is the action hook that runs when WordPress is enqueuing scripts and styles.
+>'elifin_assets' is the name of the custom function being hooked to the action.
+
+In summary, this code defines a function to load the theme's main stylesheet and then hooks that function to the wp_enqueue_scripts action, ensuring the stylesheet is included when WordPress loads the page.
+
+in addition to this , we have to add these codes to header.php and footer.php
+
+inside <head> tags in header file add this :
+<?php wp_head(); ?>  //ask the purpose of this from AI if you want. But this is an essential part
+
+just before the </body> tag in footer.php add this :
+<?php wp_footer(); ?>

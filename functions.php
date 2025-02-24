@@ -8,4 +8,10 @@ register_nav_menus([
     'sidebar'=>'Sidebar menu'
     ]);
 
+
+function elifin_assets(){
+    wp_enqueue_style('style',get_stylesheet_uri());
+}
+
+add_action('wp_enqueue_scripts','elifin_assets');
 ?>
