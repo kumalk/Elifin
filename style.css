@@ -125,7 +125,7 @@ Theme author: Prashantha Kumanayake
 
 }
 
-#content main h2 {
+#content main>h2 {
     margin-block-end: 0px!important;
     margin-block-start: 0px!important;
 }
@@ -170,6 +170,19 @@ Theme author: Prashantha Kumanayake
     text-decoration: none;
 }
 
+/* home page custom qurried content styling */
+#content #home-content-box{
+    display: flex;
+}
+
+#content #home-content-box .home-content{
+    width: 33.3%;
+    padding :10px;
+}
+
+#content #home-content-box .home-content h2{
+    font-size:1.625rem;
+}
 
 
 /*removing outer space of the page*/
