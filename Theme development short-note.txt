@@ -442,6 +442,57 @@ get_footer(); //load footer
 
 
 ==============================================================================================
+17. Developing sidebar
+
+first we added registering linking to hook that sidebar widget space intializing function in functions.php
+
+//registering sidebars to add widgets
+function elifin_widgets_init(){
+    register_sidebar( array(
+        'name' => 'Sidebar',
+        'id'=>'sidebar',
+        'before_widget'=>'<div>',
+        'after_widget'=>'</div>',
+        'before_title'=>'<h2>',
+        'after_title'=>'</h2>'
+
+    ));
+}
+//linking function to a hook
+add_action('widgets_init','elifin_widgets_init');
+
+Then We could see "Widgets" option was enabled in appearence menu which previously was not there.
+Then we added few widget to the defined side bar and added the side bar  by the following code to sidebar.php
+
+<div id="sidebar">
+    <?php dynamic_sidebar('sidebar'); ?>
+</div>
+
+Then we styled sidebar as we need like this :
+
+
+/* styling side bar */
+#content #sidebar{
+    width:30%;
+    padding:10px;
+}
+
+#content #sidebar h2{
+    background-color: black;
+    color:#fff;
+    padding:10px;
+    font-size: 1.25em;
+}
+
+#content #sidebar>div:first-child>h2{
+    margin-top:5px;
+}
+
+#content #sidebar a {
+    color:purple;
+    text-decoration: none;
+}
+
 ==============================================================================================
 ==============================================================================================
 ==============================================================================================

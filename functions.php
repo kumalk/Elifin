@@ -14,4 +14,20 @@ function elifin_assets(){
 }
 //linking style.css style sheet to the theme : adding action 
 add_action('wp_enqueue_scripts','elifin_assets');
+
+
+//registering sidebars to add widgets
+function elifin_widgets_init(){
+    register_sidebar( array(
+        'name' => 'Sidebar',
+        'id'=>'sidebar',
+        'before_widget'=>'<div>',
+        'after_widget'=>'</div>',
+        'before_title'=>'<h2>',
+        'after_title'=>'</h2>'
+
+    ));
+}
+//linking function to a hook
+add_action('widgets_init','elifin_widgets_init');
 ?>

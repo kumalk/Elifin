@@ -97,6 +97,7 @@ Theme author: Prashantha Kumanayake
 
 /* styling main page content*/
 #content{
+    display: flex;
     border-left: solid 2px #000;
     border-right: solid 2px #000;
     margin-top:0;
@@ -145,6 +146,28 @@ Theme author: Prashantha Kumanayake
     text-align: center;
     color:white;
     padding :20px;
+}
+
+/* styling side bar */
+#content #sidebar{
+    width:30%;
+    padding:10px;
+}
+
+#content #sidebar h2{
+    background-color: black;
+    color:#fff;
+    padding:10px;
+    font-size: 1.25em;
+}
+
+#content #sidebar>div:first-child>h2{
+    margin-top:5px;
+}
+
+#content #sidebar a {
+    color:purple;
+    text-decoration: none;
 }
 
 
