@@ -89,7 +89,15 @@ Theme author: Prashantha Kumanayake
     font-size: 2.5em;
 }
 
+#site-footer{
+    background-color: black;
+    text-align: center;
+    color:white;
+    padding :20px;
+}
+
 body{
     margin: 0;
     padding: 0;
 }
+
