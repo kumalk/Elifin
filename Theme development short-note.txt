@@ -147,3 +147,207 @@ inside <head> tags in header file add this :
 
 just before the </body> tag in footer.php add this :
 <?php wp_footer(); ?>
+
+
+==============================================================================================
+10. Styling navigation menu link list as real navigation bar 
+
+/* adding colors to top-navi bar */
+#top-navi{
+    background-color: rgb(0, 0, 0);
+    border:rgb(0, 0, 0) ;
+}
+/* make top navi links list inline and enebaling list to go to 2nd line if space not enough, also no space between list items  */
+#top-navi ul{
+    list-style: none;
+    margin:0;
+    padding:0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* this is to start submenu flowing begin from the parent menu item , by making parent menu item  position relatve to it's document flow.so it's child content start from their */
+#top-navi ul li{
+    position:relative;
+}
+
+/* styling links list items  */
+#top-navi ul li a{
+    text-decoration: none;
+    color:rgb(255, 255, 255);
+    font-weight: bold;
+    display: block;
+    padding:10px 20px;
+    text-align: center;
+}
+/* positioning  submenu at right under the parent menu also hides initially */
+#top-navi .sub-menu{
+    position: absolute;
+    top:100%;
+    left:0;
+    z-index: 1;
+    padding-top: 0px;
+    display: none;
+}
+/*make submenu item not going to second line*/
+#top-navi .sub-menu li{
+    white-space: nowrap;
+    width: 100%;
+}
+
+/* show sub menu only on hover it's parent menu*/
+#top-navi ul li:hover .sub-menu{
+    display: block;
+} 
+
+/* styling sub menu links setting background color */
+#top-navi .sub-menu li a {
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+}
+
+#top-navi li:hover{
+    background-color: rgb(67, 67, 67);
+    
+}
+
+#top-navi .sub-menu li a:hover {
+    background-color: rgb(67, 67, 67);
+    width: 100%;
+}
+==============================================================================================
+11. Styling Header and footer  :
+ /* site header styling  */
+#site-header{
+    background:url('banner.jpg');
+    text-align: center;
+    padding: 20px;
+    margin: 0px;
+    
+
+}
+/* site header text styling  */
+#site-header h1{
+    color: beige;
+    -webkit-text-stroke: 0px #fff;
+    font-size: 2.5em;
+}
+
+/* styling footer */
+#site-footer{ 
+    background-color: black;
+    text-align: center;
+    color:white;
+    padding :20px;
+}
+
+==============================================================================================
+12. Mark page content section and main content section , we used 
+<div id="content"> and  <main> tags in index.html like this and also added <article> tags to separate articles  :
+
+<?php
+
+get_header(); //load header
+?>
+
+<div id="content"> <!-- content starting here  -->   <<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+<main> <!-- marking main content of the page (usually without side bar) --> <<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+<?php
+if (have_posts()) { //check is there any posts  
+    while (have_posts()) { //if availabel loop through them and load each one and ech content
+        the_post(); ?>   
+        <article> <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+            <h2><?php the_title(); ?></h2>   <!-- load title of the post -->
+            <p class="date-category"><?php echo get_the_date() ?> | <?php echo get_the_category_list(" ,") ?></p>  <!-- load and print date and category , we can use the_date() but some times issues so use this one. Also can use the_category() but the are load like point list lie by line, so use this get_category_list() and echo it to print them inline  -->
+            <p><?php the_content(); ?></p> <!-- load content of the post -->
+        </article> <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        <?php
+    }
+} else {
+    echo '<p>No posts found</p>';
+}
+
+?>
+</main> <<<<<<<<<<<<<<<<<<<<<<<<
+<?php
+
+get_sidebar(); //load sidebar
+?>
+
+</div> <!-- content closing here  --> <<<<<<<<<<<<<<<<<<<<<<<<<
+
+<?php
+
+get_footer(); //load footer
+?>
+
+==============================================================================================
+13. Then we styled the article sections by adding boarder and adjusting spaces with margins
+/* styling main page content*/
+#content{
+    border-left: solid 2px #000;
+    border-right: solid 2px #000;
+    margin-top:0;
+    
+}
+
+#content main{
+    width :70%;
+    padding: 15px;
+}
+
+#content main a{
+    text-decoration: none;
+    color : purple;
+    font-weight:bold;
+}
+
+#content main p.date-category{
+    margin-block-start:0px!important;
+    margin-block-end:0px!important;
+    color:#949494;
+    }
+#content main h1 a, #content main h2 a{
+    color: #000;
+
+}
+
+#content main h2 {
+    margin-block-end: 0px!important;
+    margin-block-start: 0px!important;
+}
+
+/* addin a line after each article , a dashed line , also add margin to make space between articles */
+#content main article{
+    border-bottom: 2px dashed #949494;
+    margin-bottom:20px;
+}
+
+/* removing bottom border form last element*/
+#content main article:last-child{
+    border:none;
+}
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================
+==============================================================================================

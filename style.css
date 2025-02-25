@@ -5,9 +5,12 @@ Theme author: Prashantha Kumanayake
 
 /* making site maximum 1200px wider and centered  */
 #site-container{ 
+    display:flex;
+    flex-direction: column;
     max-width: 1200px;
     margin-left:auto;
     margin-right:auto;
+    gap: 0px;
 }
 
 /* adding colors to top-navi bar */
@@ -73,7 +76,7 @@ Theme author: Prashantha Kumanayake
     background-color: rgb(67, 67, 67);
     width: 100%;
 }
-
+ /* site header styling  */
 #site-header{
     background:url('banner.jpg');
     text-align: center;
@@ -82,22 +85,74 @@ Theme author: Prashantha Kumanayake
     
 
 }
-
+/* site header text styling  */
 #site-header h1{
     color: beige;
     -webkit-text-stroke: 0px #fff;
     font-size: 2.5em;
 }
 
-#site-footer{
+
+
+
+/* styling main page content*/
+#content{
+    border-left: solid 2px #000;
+    border-right: solid 2px #000;
+    margin-top:0;
+    
+}
+
+#content main{
+    width :70%;
+    padding: 15px;
+}
+
+#content main a{
+    text-decoration: none;
+    color : purple;
+    font-weight:bold;
+}
+
+#content main p.date-category{
+    margin-block-start:0px!important;
+    margin-block-end:0px!important;
+    color:#949494;
+    }
+#content main h1 a, #content main h2 a{
+    color: #000;
+
+}
+
+#content main h2 {
+    margin-block-end: 0px!important;
+    margin-block-start: 0px!important;
+}
+
+/* addin a line after each article , a dashed line , also add margin to make space between articles */
+#content main article{
+    border-bottom: 2px dashed #949494;
+    margin-bottom:20px;
+}
+
+/* removing bottom border form last element*/
+#content main article:last-child{
+    border:none;
+}
+/* styling footer */
+#site-footer{ 
     background-color: black;
     text-align: center;
     color:white;
     padding :20px;
 }
 
+
+
+/*removing outer space of the page*/
 body{
     margin: 0;
     padding: 0;
+    
 }
 
