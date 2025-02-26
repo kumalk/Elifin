@@ -3,6 +3,11 @@ Theme name: EliFin
 Theme author: Prashantha Kumanayake
 */
 
+/* making box counts border to inside*/
+*{
+    box-sizing: border-box;
+}
+
 /* making site maximum 1200px wider and centered  */
 #site-container{ 
     display:flex;
@@ -184,6 +189,21 @@ Theme author: Prashantha Kumanayake
     font-size:1.625rem;
 }
 
+
+/* styling category pages */
+#content #sub-cat-box{
+    display: flex;
+    flex-wrap : wrap;
+}
+
+#content #sub-cat-box section{
+    width:33.3%;
+    padding-right:10px;
+}
+
+#content #sub-cat-box section:nth-child(3){
+    padding-right:0;
+}
 
 /*removing outer space of the page*/
 body{

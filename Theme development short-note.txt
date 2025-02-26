@@ -494,7 +494,7 @@ Then we styled sidebar as we need like this :
 }
 
 ==============================================================================================
-18. We can use new  layout spesifically for home page. We can create home.php or front-page.php(*this is the best, less issues).
+18. We can use new  layout specifically for home page. We can create home.php or front-page.php(*this is the best, less issues).
 We created front-page.php and copied code from index.html to it. We had to change our post loading while loop with a custom query. 
 So I updated the code like this :
 
@@ -570,6 +570,55 @@ After that I added styling for that  in styles.css
     font-size:1.625rem;
 }
 ==============================================================================================
+19.We developed new page for sub categories. We can target that page specifically to perticular category by naming the new page category-slug.php  or category-id.php according to template hirarchy 
+We used following code instead of typical while loop we used to load content in other pages:
+
+<main> <!-- marking main content of the page (usually without side bar) -->
+    <h2><?php echo get_queried_object()->name ?></h2> <!-- Display the name of the current category or taxonomy being queried -->
+    <p><?php echo get_queried_object()->description ?></p> <!-- Display the description of the current category or taxonomy being queried -->
+
+    <div id="sub-cat-box"> <!-- Container for sub-categories -->
+        <?php
+            $id = get_queried_object()->term_id; // Get the term ID of the queried category or taxonomy
+            $type = get_queried_object()->taxonomy; // Get the taxonomy type of the queried object
+            $subcats = get_term_children($id, $type); // Get the child terms of the current term
+            foreach($subcats as $cat){ // Loop through each sub-category
+                $cat_object = get_term_by('id', $cat, $type); // Get the term object for each sub-category
+                ?>
+                <section> <!-- Section for each sub-category -->
+                    <h3><a href="<?php echo get_term_link($cat, $type); ?>"><?php echo $cat_object->name; ?></a></h3> <!-- Display the name of the sub-category as a link to its archive page -->
+                    <p><?php echo $cat_object->description; ?></p> <!-- Display the description of the sub-category -->
+                </section>
+           <?php
+            } // End of the sub-category loop
+            ?>
+        
+    </div> <!-- End of sub-cat-box -->
+</main> <!-- End of main content area -->
+
+
+Then we styled the category page using this code :
+/* styling category pages */
+#content #sub-cat-box{
+    display: flex;
+    flex-wrap : wrap;
+}
+
+#content #sub-cat-box section{
+    width:33.3%;
+    padding-right:10px;
+}
+
+#content #sub-cat-box section:nth-child(3){
+    padding-right:0;
+}
+
+**** We encountered an error of box padding is considered as out side of the box real width, to rectify it we added this css policy to the top of style.css to meke it valid for all the page:
+/* making box counts border to inside*/
+*{
+    box-sizing: border-box;
+}
+
 ==============================================================================================
 ==============================================================================================
 ==============================================================================================
