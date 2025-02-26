@@ -30,4 +30,17 @@ function elifin_widgets_init(){
 }
 //linking function to a hook
 add_action('widgets_init','elifin_widgets_init');
+
+// Define a function to set up the theme
+function elifin_theme_setup() {
+    // Add support for the title tag, allowing WordPress to manage the document title
+    add_theme_support('title-tag');
+}
+
+// Hook the theme setup function to the 'after_setup_theme' action
+// This ensures the function runs after the theme is set up
+add_action('after_setup_theme', 'elifin_theme_setup');
+
 ?>
+
+

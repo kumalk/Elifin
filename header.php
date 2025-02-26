@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes();?>>
 <head>
     <!-- adding site name and ste tagline as the site title using bloginfo() -->
-    <title><?php bloginfo('name') ?> : <?php bloginfo('description') ?></title>   
+    
     <!-- including charset incase of if title text does include non-ASCII chars, using bloginfo() it takes site's charset dynamically -->
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
     
 <div id="site-container">
     <nav id="top-navi">

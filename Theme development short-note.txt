@@ -620,6 +620,33 @@ Then we styled the category page using this code :
 }
 
 ==============================================================================================
+20.  We did bunch of little improvements here and there. Here are them.
+
+1. Added language attribute to make it screen reader friendly. To load the language we used following code update in header.php
+<!DOCTYPE html>
+<html <?php language_attributes();?>>   <<<<<<<<<<<<<
+<head>
+
+2. We added default wordpress body class to body tag since it may used by some plugins and screen ready friendly.
+</head>
+<body <?php body_class(); ?>>     <<<<<<<<<
+    
+<div id="site-container">
+
+3. Then we setup dynamic title instead of static title. We added this function and action hook joining  to add the title to the functions.php page.
+We deleted  previous title tags from header too.
+
+// Define a function to set up the theme
+function elifin_theme_setup() {
+    // Add support for the title tag, allowing WordPress to manage the document title
+    add_theme_support('title-tag');
+}
+
+// Hook the theme setup function to the 'after_setup_theme' action
+// This ensures the function runs after the theme is set up
+add_action('after_setup_theme', 'elifin_theme_setup');
+
+
 ==============================================================================================
 ==============================================================================================
 ==============================================================================================
