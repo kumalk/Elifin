@@ -669,18 +669,127 @@ add_action('excerpt_more', 'elifin_read_more');
     background-color: #343434;
 }
 ==============================================================================================
+21. Making site responsive 
 
-==============================================================================================
-==============================================================================================
-==============================================================================================
-==============================================================================================
-==============================================================================================
-==============================================================================================
-==============================================================================================
-==============================================================================================
-==============================================================================================
-==============================================================================================
-==============================================================================================
-==============================================================================================
-==============================================================================================
+1. To make home page content one column in tablet size screens  and below. We used this media query in style.css :
+/* making site responsive */
+@media only screen and (max-width:950px){
+    #content #home-content-box{
+        display: block;
+    }
+    #content #home-content-box .home-content{
+        width: 100%;
+    }
+}
+
+2. To move side bar under the content in tablet portrait or below screens
+@media only screen and (max-width:650px){
+    #content{
+        display: block;
+    }
+
+    #content main,#content #sidebar{
+        width: 100%;
+    }
+}
+
+
+3. Making navigation bar responsive 
+We created another menu item in wP backend with hambrget icon as the first menu item and added some code to media queries to show hide menu bar and hamburget menu item :
+
+/* making site responsive */
+
+#top-navi>div>ul>li:first-child{
+        display: none;
+}
+
+@media only screen and (max-width:950px){
+    #content #home-content-box{
+        display: block;
+    }
+    #content #home-content-box .home-content{
+        width: 100%;
+    }
+
+    #top-navi>div>ul>li:first-child{
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width:650px){
+    #content{
+        display: block;
+    }
+
+    #content main,#content #sidebar{
+        width: 100%;
+    }
+
+    #top-navi ul{
+        display: block;
+    }
+
+    #top-navi .sub-menu{
+        display: block;
+        position: relative;
+        top:0;
+        left:0;
+        font-size:0.8em;
+    }
+    
+    #top-navi>div>ul>li:first-child{
+        display: block;
+    }
+
+    #top-navi>div>ul>li:not(:first-child){
+        display: none;
+    }
+}
+
+To do the display menu when clicked on hamburger , we have to use Javascript jQuery, 
+So we added following code lines to functions.php
+
+// Linking style.css stylesheet to the theme: function
+function elifin_assets() {
+    wp_enqueue_style('style', get_stylesheet_uri());
+    wp_enqueue_script('elifin-script', get_template_directory_uri() . '/js/elifin.js', array('jquery'), '1.0.0', true); <<<<<<<<<<<<<<<<<<
+}
+
+// Linking style.css stylesheet to the theme: adding action
+add_action('wp_enqueue_scripts', 'elifin_assets');
+
+Then created a JS file in /js/elifin.js and added jQuery code as follows to hamburger menu only activates screen below 650 width and full menu for larger screeens.
+
+elifin.js :
+
+jQuery(document).ready(function(){
+    jQuery('#top-navi>div>ul>li:first-child').on("click",function(){
+        jQuery('#top-navi>div>ul>li:not(:first-child)').slideToggle(400);
+    });
+    jQuery(window).resize(function(){
+        if(jQuery(window).width()>650){
+            jQuery('#top-navi>div>ul>li:not(:first-child)').show();
+        }else{
+            jQuery('#top-navi>div>ul>li:not(:first-child)').hide();
+        }
+    });
+
+});
+
+Now navigation menu works fine in all screen sizes.
+
+
+4. Making category page content one column in smaller screens.
+We used following CSS code in style.css :
+In media quarry :
+#content #sub-cat-box{
+    display: block;
+    }
+
+    #content #sub-cat-box section{
+    width:100%;
+    padding-right:0;
+    }
+
 ==============================================================================================
