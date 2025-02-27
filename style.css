@@ -32,6 +32,16 @@ Theme author: Prashantha Kumanayake
     flex-wrap: wrap;
 }
 
+/* make activated current page, post, category get highlighted*/
+#top-navi ul li.current_page_item > a,
+#top-navi ul li.current-menu-item > a,
+#top-navi ul li.current-category-parent > a,
+#top-navi ul li.current-post-ancestor > a
+{
+    background-color: #343434;
+}
+
+
 /* this is to start submenu flowing begin from the parent menu item , by making parent menu item  position relatve to it's document flow.so it's child content start from their */
 #top-navi ul li{
     position:relative;

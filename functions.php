@@ -37,6 +37,16 @@ function elifin_theme_setup() {
     add_theme_support('title-tag');
 }
 
+// Define a function to modify the "read more" link for post excerpts
+function elifin_read_more($more) {
+    global $post;
+    // Use get_permalink() to get the URL of the current post
+    return ' <a href="' . get_permalink($post->ID) . '">Read more &raquo;</a>';
+}
+
+// Hook the function to the 'excerpt_more' filter
+add_action('excerpt_more', 'elifin_read_more');
+
 // Hook the theme setup function to the 'after_setup_theme' action
 // This ensures the function runs after the theme is set up
 add_action('after_setup_theme', 'elifin_theme_setup');

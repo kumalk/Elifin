@@ -646,8 +646,30 @@ function elifin_theme_setup() {
 // This ensures the function runs after the theme is set up
 add_action('after_setup_theme', 'elifin_theme_setup');
 
+4. We relaced [...] atthe end of post excerpt with "Read more >>" also with link to that post.
+We only had to add new function to function.php and add filter hook to that function. Here are the code :
 
+// Define a function to modify the "read more" link for post excerpts
+function elifin_read_more($more) {
+    global $post;
+    // Use get_permalink() to get the URL of the current post
+    return ' <a href="' . get_permalink($post->ID) . '">Read more &raquo;</a>';
+}
+
+// Hook the function to the 'excerpt_more' filter
+add_action('excerpt_more', 'elifin_read_more');
+
+5. We added css styling to current clicked cateogry and current post link and current page link to get active post, it's category and page link highlighted in top navigation bar
+
+/* Make activated current page, post, category get highlighted */
+#top-navi ul li.current_page_item > a,
+#top-navi ul li.current-menu-item > a,
+#top-navi ul li.current-category-parent > a,
+#top-navi ul li.current-post-ancestor > a {
+    background-color: #343434;
+}
 ==============================================================================================
+
 ==============================================================================================
 ==============================================================================================
 ==============================================================================================
